@@ -14,3 +14,17 @@
     - **exclusao.html :** deve possuir alguns atributos do usuário ou produto que podem ser excluidos, cada atributo deve ter um botão ao lado permitindo a exclusão. Não haverá ação, somente a estrutura dos botões.
 
 **Tempo para realização:** Acompanhar o prazo no Google Classroom. Enviar peloGoogle Classroom, na atividade criada vai ter uma questão para enviar um arquivo.O arquivo deve estar em formato .zip ou .rar e conter os arquivos HTML pedidos.
+
+# Resultado
+
+## Cadastro
+![Cadastro](ImagensDoProjeto/Cadastro.png)
+
+## Leitura
+![Cadastro](ImagensDoProjeto/Leitura.png)
+
+## Atualização
+![Cadastro](ImagensDoProjeto/Atualizacao.png)
+
+## Exclusão
+![Cadastro](ImagensDoProjeto/Exclusao.png)
