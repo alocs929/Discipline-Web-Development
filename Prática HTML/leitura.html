@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles-layout.css">
+  <link href="https://fonts.googleapis.com/css2?family=Gentium+Book+Basic:wght@700&display=swap" rel="stylesheet"> 
+  <link rel = "icon" href ="img/study.svg"type = "image/x-icon"> 
+  <title>Leitura</title>
+</head>
+<body>
+  <nav class="conteiner">
+    <ul>
+      <li>
+        <a href="index.html">
+          CADASTRO
+        </a>
+      </li>
+      <li>
+        <a href="leitura.html">
+          LEITURA
+        </a>
+      </li>
+      <li>
+        <a href="atualizacao.html">
+          ATUALIZAÇÃO
+        </a>
+      </li>
+      <li>
+        <a href="exclusao.html">
+          EXCLUSÃO
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="conteiner">
+
+    <div class="titulo">
+      <img src="img/study.svg" alt="">
+      <h1>Bem vindo(a) a pagina de Leitura!</h1>
+
+    </div>
+    
+    
+    <form action="/">
+
+      <div class="fields">
+        <div class="labelAndInput">
+          <label for="titulo">Titulo</label>
+          <input id="inputDesable" type="text"placeholder="Titulo" value="A volta dos que não Foram" disabled>
+        </div>
+        
+        <div class="labelAndInput">
+          <label for="autor">Autor</label>
+          <input id="inputDesable" type="text" placeholder="Autor" value="Bruno Martins" disabled>
+        </div>
+        
+        <div class="labelAndInput">
+          <label for="isbn">ISBN</label>
+          <input id="inputDesable"  type="number" placeholder="0" value="123243" disabled> 
+        </div>
+
+        <div class="labelAndInput">
+            <label for="preco">Preço</label>
+            <input id="inputDesable" type="number" placeholder="0" value="23.99" disabled>
+        </div>
+      
+        <div class="labelAndInput">
+            <label for="quantidade">Quatidade</label>
+            <input id="inputDesable" type="number" placeholder="0" value="8" disabled>
+        </div>
+        
+        <div class="labelAndInput">
+          <label for="codBarras">Cód. de Barras</label>
+          <input id="inputDesable" type="number" placeholder="0" value="12345678"disabled>
+        </div>
+        
+        <div class="labelAndInput">
+          <label for="dataDaAquisicao">Data da Aquisição</label>
+          <input id="inputDesable" type="date" max="2020-07-30" value="2020-07-30" disabled>
+          <!-- data maxima é o dia atual -->
+        </div>
+
+        <div class="labelAndInput">
+          <label for="genero">Gênero</label>
+          <select id="inputDesable" name="genero" class="seletorDeGenero" disabled>
+            <option value="01">Terror</option>
+            <option value="null">--</option>
+            <option value="02">Romance</option>
+            <option value="03">Drama</option>
+          </select>
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+ 
+</body>
+</html>
