@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400&display=swap" rel="stylesheet"> 
+  <title>Prática HTML + CSS</title>
+</head>
+<body>
+
+
+  <h1>Projeto adaptado - Des Web</h1>
+  <p>Exemplo de formulário de pesquisa(Survey)</p>
+
+    
+  <form>
+    <div class="field">
+      <label>Nome</label>
+      <input type="text" placeholder="Coloque seu nome..." name="name" />
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input type="text" placeholder="Coloque seu Email..." name="email" />
+    </div>
+
+    <div id="afterOpcional" class="field">
+      <label>Idade</label>
+      <input type="number" placeholder="Coloque sua idade..." name="name" />
+    </div>
+
+    <div class="field">
+      <label>Qual opção melhor descreve o seu estado atual?</label>
+      <select >
+        <option value="" selected disabled >Selecione a ocupação</option>
+        <option value="1">Estutante</option>
+        <option value="2">CLT</option>
+        <option value="3">Prefiro não dizer</option>
+        <option value="4">Outro</option>
+      </select>
+    </div>
+    
+    <div class="fieldEspecial">
+      <label>Você recomendaria este projeto?</label>
+      
+      <div class="especial">
+        <input type="radio" id="comCerteza" name="recomendation" value="0">
+        <label for="comCerteza">Com certeza</label>
+      </div>
+
+      <div class="especial">
+        <input type="radio" id="talvez" name="recomendation" value="1">
+        <label for="talvez">Talvez</label>
+      </div>
+      
+      <div class="especial">
+        <input type="radio" id="naoSei" name="recomendation" value="2">
+        <label for="naoSei">Não sei</label>
+      </div>
+
+    </div>
+    
+    
+    <div id="afterSelecione" class="fieldEspecial">
+      <label>O que você gostaria de melhorar?</label>
+        <div class="especial">
+          <input type="checkbox" id="terMaisTempoParaEstudar" name="melhorar" value="0">
+          <label for="terMaisTempoParaEstudar">Ter Mais Tempo Para Estudar</label>
+        </div>
+        <div class="especial">
+          <input type="checkbox" id="talvez" name="melhorar" value="1">
+          <label for="talvez">Talvez</label>
+        </div>
+        <div class="especial">
+          <input type="checkbox" id="naoSei" name="melhorar" value="2">
+          <label for="naoSei">Não sei</label>
+        </div>    
+      </div>
+
+    <div class="field">
+      <label>Algum comentário ou sugestão?</label>
+      <textarea type="text" placeholder="Insira seu comentário ou sugestão aqui..." name="email"></textarea>
+    </div>
+
+    <button type="submit">Enviar</button>
+  
+  </form>
+
+
+  
+</body>
+</html>

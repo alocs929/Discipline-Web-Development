@@ -1,0 +1,145 @@
+body {
+  /* controle  do tamanho da aplicação*/
+  font-size: 60%; 
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body{
+  height: 100vh;
+}
+
+body,
+input,
+button,
+textarea{
+  /* font-family:  'Poppins', sans-serif; */
+  font: 0.8rem Poppins;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+@media (max-width: 1400px){
+  body{
+    margin: 3rem 0 3rem 0;
+  }
+}
+/*
+Acima são configurações feitas
+antes de iniciar de fato a estilização
+do projeto
+*/
+
+body{
+
+  background:
+    linear-gradient( rgba(46, 36, 131, 0.623), rgba(45, 36, 131, 0.623)), 
+    url(./background.jpg) no-repeat;
+    background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-content: center;
+
+}
+
+body h1, p{
+  color: #fff;
+}
+
+body > p {
+    font-style: italic;
+}
+
+
+form {
+  margin-top: 1rem;
+  padding: 1rem 1rem;
+  width: 30.0rem;
+  background-color:  rgba(23, 16, 80, 0.794);
+  border-radius: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+}
+
+form div.field {
+  width: 100%;
+  display: flex;
+  /* flex: 1; */
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+form label {
+  color: #fff;
+}
+
+form div#afterOpcional > label::after {
+  content: ' (opcional)';
+  display: inline;
+
+  font-weight: 200;
+}
+
+form div.field input, textarea, select {
+  border-style: none;
+  width: 100%;
+  font-style: none;
+  border-radius: 0.18rem;
+  padding: 0.5rem; 
+}
+
+form div.field textarea {
+  max-width: 100%;
+} 
+
+form div.fieldEspecial {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+form div.fieldEspecial > div.especial {
+  display: flex;
+  flex-direction: row;
+} 
+
+form div.fieldEspecial > div.especial label {
+  margin-left: 0.3rem;
+}
+
+form div#afterSelecione > label::after{
+  content: ' (Selecione quantos quiser)';
+  display: inline;
+
+  font-weight: 200;
+}
+
+
+form button {
+  border-style: none;
+  border-radius: 0.2rem;
+  color: #fff;
+  background: rgb(11, 155, 11);
+  
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.3rem;
+}
+
