@@ -1,11 +1,8 @@
 import { Router } from 'express';
+import tradingsRouter from './tradings.routes';
 
 const routes = Router();
 
-routes.get('/', (request, response) => {
-  const { name } = request.body;
-
-  return response.json({ ok: true });
-});
+routes.use('/tradings', tradingsRouter);
 
 export default routes;
