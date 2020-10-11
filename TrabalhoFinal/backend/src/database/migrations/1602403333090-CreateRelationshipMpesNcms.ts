@@ -5,12 +5,12 @@ import {
   TableForeignKey,
 } from 'typeorm';
 
-export default class CreateRelationshipTradingsNcms1602299669536
+export default class CreateRelationshipMpesNcms1602403333090
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'tradings_ncms',
+        name: 'mpes_ncms',
         columns: [
           {
             name: 'id',
@@ -20,7 +20,7 @@ export default class CreateRelationshipTradingsNcms1602299669536
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'trading_id',
+            name: 'mpe_id',
             type: 'uuid',
             isNullable: false,
           },
@@ -44,19 +44,19 @@ export default class CreateRelationshipTradingsNcms1602299669536
     );
 
     await queryRunner.createForeignKey(
-      'tradings_ncms',
+      'mpes_ncms',
       new TableForeignKey({
-        name: 'TradingId',
-        columnNames: ['trading_id'],
+        name: 'MpeId',
+        columnNames: ['mpe_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'tradings',
+        referencedTableName: 'mpes',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
       }),
     );
 
     await queryRunner.createForeignKey(
-      'tradings_ncms',
+      'mpes_ncms',
       new TableForeignKey({
         name: 'NcmId',
         columnNames: ['ncm_id'],
@@ -69,8 +69,8 @@ export default class CreateRelationshipTradingsNcms1602299669536
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('tradings_ncms', 'TradingId');
-    await queryRunner.dropForeignKey('tradings_ncms', 'NcmId');
-    await queryRunner.dropTable('tradings_ncms');
+    await queryRunner.dropForeignKey('mpes_ncms', 'MpeId');
+    await queryRunner.dropForeignKey('mpes_ncms', 'NcmId');
+    await queryRunner.dropTable('mpes_ncms');
   }
 }

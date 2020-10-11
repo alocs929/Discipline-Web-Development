@@ -6,13 +6,13 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('tradings_ncms')
-class TradingsNcms {
+@Entity('mpes_ncms')
+class MpeNcm {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
-  trading_id: string;
+  mpe_id: string;
 
   @Column()
   ncm_id: string;
@@ -24,4 +24,4 @@ class TradingsNcms {
   updated_at: Date;
 }
 
-export default TradingsNcms;
+export default MpeNcm;

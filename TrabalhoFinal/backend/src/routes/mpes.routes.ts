@@ -2,20 +2,20 @@ import { Router } from 'express';
 import { getCustomRepository, In } from 'typeorm';
 import Ncm from '../models/Ncm';
 import NcmsRepository from '../repositories/NcmsRepository';
-import TradingsRepository from '../repositories/TradingsRepository';
+import MpesRepository from '../repositories/MpesRepository';
 import CreateNcmService from '../services/CreateNcmService';
-import CreateTradingNcmService from '../services/CreateTradingNcmService';
-import CreateTradingService from '../services/CreateTradingService';
+import CreateTradingsNcmsService from '../services/CreateTradingsNcmsService';
+import CreateMpeService from '../services/CreateMpeService';
 
-const tradingsRouter = Router();
+const mpesRouter = Router();
 
-tradingsRouter.get('/', async (request, response) => {
-  const tradingsRepository = getCustomRepository(TradingsRepository);
-  const tradings = await tradingsRepository.find();
-  return response.json(tradings);
+mpesRouter.get('/', async (request, response) => {
+  const mpesRepository = getCustomRepository(MpesRepository);
+  const mpes = await mpesRepository.find();
+  return response.json(mpes);
 });
 
-tradingsRouter.post('/', async (request, response) => {
+mpesRouter.post('/', async (request, response) => {
   try {
     const {
       razaoSocial,
@@ -27,15 +27,15 @@ tradingsRouter.post('/', async (request, response) => {
       products,
     } = request.body;
 
-    const createTrading = new CreateTradingService();
+    const createMpeService = new CreateMpeService();
     const createNcmService = new CreateNcmService();
-    const createTradingsNcmsService = new CreateTradingNcmService();
+    const createTradingsNcmsService = new CreateTradingsNcmsService();
 
     products.map(async (items: number) => {
       await createNcmService.execute({ ncm: items });
     });
 
-    const trading = await createTrading.execute({
+    const trading = await createMpeService.execute({
       cnpj,
       email,
       password,
@@ -64,4 +64,4 @@ tradingsRouter.post('/', async (request, response) => {
   }
 });
 
-export default tradingsRouter;
+export default mpesRouter;

@@ -6,31 +6,16 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('tradings')
-class Trading {
+@Entity('tradings_ncms')
+class TradingNcm {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
-  perfil_url: string;
+  trading_id: string;
 
   @Column()
-  razao_social: string;
-
-  @Column()
-  cnpj: string;
-
-  @Column()
-  email: string;
-
-  @Column()
-  telephone: string;
-
-  @Column()
-  whatsapp: string;
-
-  @Column()
-  password: string;
+  ncm_id: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -38,4 +23,5 @@ class Trading {
   @UpdateDateColumn()
   updated_at: Date;
 }
-export default Trading;
+
+export default TradingNcm;

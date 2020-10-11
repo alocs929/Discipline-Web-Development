@@ -46,8 +46,15 @@ class CreateTradingService {
         password,
       }),
     );
-
     return trading;
+    // return tradingsRepository.create({
+    //   razao_social,
+    //   cnpj,
+    //   email,
+    //   telephone,
+    //   whatsapp,
+    //   password,
+    // });
   }
 }
 

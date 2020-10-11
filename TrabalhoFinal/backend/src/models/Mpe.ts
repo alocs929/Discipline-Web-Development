@@ -6,8 +6,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('tradings')
-class Trading {
+@Entity('mpes')
+class Mpe {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -38,4 +38,4 @@ class Trading {
   @UpdateDateColumn()
   updated_at: Date;
 }
-export default Trading;
+export default Mpe;
