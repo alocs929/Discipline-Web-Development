@@ -10,6 +10,7 @@ import CreateTradingNcmService from '../services/CreateTradingNcmService';
 import CreateTradingService from '../services/CreateTradingService';
 import uploadConfig from '../config/upload';
 import UpdateTradingAvatarService from '../services/UpdateTradingAvatarService';
+import ListMatchTradingWithMpesService from '../services/ListMatchTradingWithMpesService';
 
 const tradingsRouter = Router();
 const upload = multer(uploadConfig);
@@ -126,4 +127,17 @@ tradingsRouter.patch(
     return response.json(tradingWithoutPassword);
   },
 );
+
+tradingsRouter.get(
+  '/matchMpes',
+  ensureAuthenticated,
+  async (request, response) => {
+    const listMatchTradingWithMpesService = new ListMatchTradingWithMpesService();
+    const result = await listMatchTradingWithMpesService.execute(
+      request.user.id,
+    );
+    return response.json(result);
+  },
+);
+
 export default tradingsRouter;
