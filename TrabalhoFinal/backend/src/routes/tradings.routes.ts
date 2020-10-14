@@ -1,18 +1,38 @@
 import { Router } from 'express';
 import { getCustomRepository, In } from 'typeorm';
+import multer from 'multer';
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 import Ncm from '../models/Ncm';
 import NcmsRepository from '../repositories/NcmsRepository';
 import TradingsRepository from '../repositories/TradingsRepository';
 import CreateNcmService from '../services/CreateNcmService';
 import CreateTradingNcmService from '../services/CreateTradingNcmService';
 import CreateTradingService from '../services/CreateTradingService';
+import uploadConfig from '../config/upload';
+import UpdateTradingAvatarService from '../services/UpdateTradingAvatarService';
 
 const tradingsRouter = Router();
+const upload = multer(uploadConfig);
 
-tradingsRouter.get('/', async (request, response) => {
+tradingsRouter.get('/', ensureAuthenticated, async (request, response) => {
   const tradingsRepository = getCustomRepository(TradingsRepository);
   const tradings = await tradingsRepository.find();
-  return response.json(tradings);
+
+  const tradingsWithoutPassword = tradings.map(trading => {
+    return {
+      id: trading.id,
+      profile_url: trading.profile_url,
+      razao_social: trading.razao_social,
+      cnpj: trading.cnpj,
+      email: trading.email,
+      telephone: trading.telephone,
+      whatsapp: trading.whatsapp,
+      created_at: trading.created_at,
+      updated_at: trading.updated_at,
+    };
+  });
+
+  return response.json(tradingsWithoutPassword);
 });
 
 tradingsRouter.post('/', async (request, response) => {
@@ -29,7 +49,7 @@ tradingsRouter.post('/', async (request, response) => {
 
     const createTrading = new CreateTradingService();
     const createNcmService = new CreateNcmService();
-    const createTradingsNcmsService = new CreateTradingNcmService();
+    const createTradingNcmService = new CreateTradingNcmService();
 
     products.map(async (items: number) => {
       await createNcmService.execute({ ncm: items });
@@ -52,16 +72,58 @@ tradingsRouter.post('/', async (request, response) => {
     });
 
     arrayNcms.map(async (item: Ncm) => {
-      await createTradingsNcmsService.execute({
+      await createTradingNcmService.execute({
         trading_id: trading.id,
         ncm_id: item.id,
       });
     });
 
-    return response.json({ trading, ncms: arrayNcms });
+    const tradingWithoutPassword = {
+      id: trading.id,
+      profile_url: trading.profile_url,
+      razao_social: trading.razao_social,
+      cnpj: trading.cnpj,
+      email: trading.email,
+      telephone: trading.telephone,
+      whatsapp: trading.whatsapp,
+      created_at: trading.created_at,
+      updated_at: trading.updated_at,
+    };
+
+    return response.json({
+      trading: tradingWithoutPassword,
+      ncms: arrayNcms,
+    });
   } catch (err) {
     return response.status(400).json({ error: err.message });
   }
 });
 
+tradingsRouter.patch(
+  '/avatar',
+  ensureAuthenticated,
+  upload.single('avatar'),
+  async (request, response) => {
+    const updateTradingAvatar = new UpdateTradingAvatarService();
+
+    const trading = await updateTradingAvatar.execute({
+      trading_id: request.user.id,
+      avatarfileName: request.file.filename,
+    });
+
+    const tradingWithoutPassword = {
+      id: trading.id,
+      profile_url: trading.profile_url,
+      razao_social: trading.razao_social,
+      cnpj: trading.cnpj,
+      email: trading.email,
+      telephone: trading.telephone,
+      whatsapp: trading.whatsapp,
+      created_at: trading.created_at,
+      updated_at: trading.updated_at,
+    };
+
+    return response.json(tradingWithoutPassword);
+  },
+);
 export default tradingsRouter;

@@ -12,7 +12,7 @@ class Trading {
   id: string;
 
   @Column()
-  perfil_url: string;
+  profile_url: string;
 
   @Column()
   razao_social: string;

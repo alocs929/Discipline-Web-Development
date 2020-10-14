@@ -17,7 +17,7 @@ interface ResponseDTO {
   updated_at: Date;
 }
 
-class CreateMpesNcmsService {
+class CreateMpeNcmService {
   public async execute({ mpe_id, ncm_id }: RequestDTO): Promise<ResponseDTO> {
     const mpesNcmsRepository = getCustomRepository(MpesNcmsRepository);
     const mpesRepository = getCustomRepository(MpesRepository);
@@ -69,4 +69,4 @@ class CreateMpesNcmsService {
   }
 }
 
-export default CreateMpesNcmsService;
+export default CreateMpeNcmService;

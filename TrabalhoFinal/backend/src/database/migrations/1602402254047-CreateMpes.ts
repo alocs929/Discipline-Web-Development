@@ -14,7 +14,7 @@ export default class CreateMpes1602402254047 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'perfil_url',
+            name: 'profile_url',
             type: 'varchar',
             isNullable: true,
           },

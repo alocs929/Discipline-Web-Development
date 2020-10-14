@@ -1,4 +1,5 @@
 import { getCustomRepository } from 'typeorm';
+import AppError from '../errors/AppError';
 import Ncm from '../models/Ncm';
 import NcmsRepository from '../repositories/NcmsRepository';
 
@@ -14,7 +15,7 @@ class AddDescriptionNcmService {
     const checkNcmExist = await ncmsRepository.findOne({ where: { ncm } });
 
     if (!checkNcmExist) {
-      throw Error('Ncm not exists');
+      throw new AppError('Ncm not exists');
     }
 
     checkNcmExist.description = description;

@@ -1,7 +1,9 @@
 import { getCustomRepository } from 'typeorm';
+import { hash } from 'bcryptjs';
 import Ncm from '../models/Ncm';
 import Mpe from '../models/Mpe';
 import MpesRepository from '../repositories/MpesRepository';
+import AppError from '../errors/AppError';
 
 interface RequestDTO {
   razao_social: string;
@@ -27,14 +29,16 @@ class CreateMpeService {
     const checkCnpj = await mpesRepository.findByCnpj(cnpj);
 
     if (checkCnpj) {
-      throw Error('This cnpj already exists');
+      throw new AppError('This cnpj already exists');
     }
 
     const checkEmail = await mpesRepository.findByEmail(email);
 
     if (checkEmail) {
-      throw Error('This email already exists');
+      throw new AppError('This email already exists');
     }
+
+    const hashedPassword = await hash(password, 8);
 
     const mpe = await mpesRepository.save(
       mpesRepository.create({
@@ -43,9 +47,10 @@ class CreateMpeService {
         email,
         telephone,
         whatsapp,
-        password,
+        password: hashedPassword,
       }),
     );
+
     return mpe;
   }
 }

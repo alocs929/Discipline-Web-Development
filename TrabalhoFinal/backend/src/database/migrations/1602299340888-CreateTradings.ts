@@ -14,7 +14,7 @@ export default class CreateTradings1602299340888 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'perfil_url',
+            name: 'profile_url',
             type: 'varchar',
             isNullable: true,
           },
