@@ -140,4 +140,10 @@ tradingsRouter.get(
   },
 );
 
+tradingsRouter.get('/:id', ensureAuthenticated, async (request, response) => {
+  const listMatchTradingWithMpesService = new ListMatchTradingWithMpesService();
+  const result = await listMatchTradingWithMpesService.execute(request.user.id);
+  return response.json(result);
+});
+
 export default tradingsRouter;

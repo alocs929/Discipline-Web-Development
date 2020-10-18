@@ -9,6 +9,7 @@ class ListMatchMpeWithTradingsService {
     const mpesNcmsRepository = getCustomRepository(MpesNcmsRepository);
     const tradingsRepository = getCustomRepository(TradingsRepository);
     const tradingsNcmsRepository = getCustomRepository(TradingsNcmsRepository);
+
     const idsNcms = await mpesNcmsRepository.findIdNcmsWithMpe(id);
     const idsTradings = await tradingsNcmsRepository.findIdTradingsWithNcms(
       idsNcms,
